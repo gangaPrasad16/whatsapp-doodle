@@ -64,17 +64,17 @@ app.post('/api/addgroup',async(request,response)=>{
     }
 })
     
+//Start the server
+app.listen(PORT, ()=>{
+    console.log(`Server is running on port ${PORT}`);
+})
 
 
 //Connecting to database
 // mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MongoDBURL)
         .then(() => {
-            console.log('App connected to database'); 
-            //Start the server
-            app.listen(PORT, ()=>{
-                console.log(`Server is running on port ${PORT}`);
-            })   
+            console.log('App connected to database');    
         })
         .catch((error)=>{
             console.log('Error in Database');
