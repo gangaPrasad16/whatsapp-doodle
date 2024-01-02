@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import express, { request,response } from "express";
 import cors from 'cors';
 import { Group } from "./models/models.js";
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const app = express();
