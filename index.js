@@ -69,7 +69,7 @@ app.post('/api/addgroup',async(request,response)=>{
         const savedGroup = await newGroup.save();
 
         // Respond with the saved group data or a success message
-        response.status(201).send(savedGroup);
+        response.status(201).json(savedGroup);
 
         // console.log(savedGroup);
         
