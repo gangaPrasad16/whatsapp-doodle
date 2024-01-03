@@ -28,12 +28,12 @@ app.use(express.json()); //For Converting JSON String to JSON Object.
 
 app.get('/',(response,request)=>{
     try {
-        response.status(200).json({
+        response.status(200).send({
             error: "Successfully connected to the site."
         });
     } catch (error) {
-        console.log(error);
-        response.status(500).json({ error: 'Internal server error' });
+        console.error(error);
+        response.status(500).send({ error: 'Internal server error' });
     }
 })
 
@@ -44,7 +44,7 @@ app.get('/api/listgroups', async(request,response)=>{
         const databaseData = await Group.find();
         console.log(databaseData);
         //Send fetched data as a JSON response
-        response.json(databaseData);
+        response.send(databaseData);
 
     } catch (error) {
         response.status(400).send({
@@ -68,13 +68,13 @@ app.post('/api/addgroup',async(request,response)=>{
         const savedGroup = await newGroup.save();
 
         // Respond with the saved group data or a success message
-        response.status(201).json(savedGroup);
+        response.status(201).send(savedGroup);
 
         // console.log(savedGroup);
         
     } catch (error) {
-        console.log(error);
-        response.status(500).json({ error: 'Internal server error' });
+        console.error(error);
+        response.status(500).send({ error: 'Internal server error' });
     }
 })
     
