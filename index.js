@@ -28,9 +28,10 @@ app.use(express.json()); //For Converting JSON String to JSON Object.
 
 app.get('/',(response,request)=>{
     try {
-        response.status(200).send({
-            error: "Successfully connected to the site."
-        });
+        // response.status(200).send({
+        //     error: "Successfully connected to the site."
+        // });
+        console.log('Successfully connected to the site.')
     } catch (error) {
         console.error(error);
         response.status(500).send({ error: 'Internal server error' });
